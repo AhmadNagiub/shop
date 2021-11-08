@@ -1,0 +1,90 @@
+<p-toast></p-toast>
+<div class="admin-page" *ngIf="order">
+    <p-card
+    header="View Orders"
+    subheader="You can edit order Status here">
+
+
+<p-fieldset [toggleable]="true" styleClass="mb-4" legend="Order Details">
+    <div class="grid">
+        <div class="col-4">            
+            <h5>Order Id</h5>
+            <p>{{order.id}}</p>
+        </div>
+        <div class="col-4">            
+            <h5>Order Date</h5>
+            <p>{{order.dateOrdered | date: 'short'}}</p>
+        </div>
+        <div class="col-4">            
+            <h5>Order Status</h5>
+            <p-dropdown
+            placeholder="status"
+            [options]="orderStatuses"
+            optionLabel="name"
+            optionValue="id"
+            (onChange)="onStatusChange($event)"
+            [(ngModel)]="selectedStatus"
+            ></p-dropdown>
+        </div>
+        <div class="col-4">            
+            <h5>Order Total Price</h5>
+            <p>{{order.totalPrice |currency }}</p>
+        </div>
+    </div>
+</p-fieldset>
+
+<p-fieldset [toggleable]="true" styleClass="mb-4" legend="Order Items">
+    <p-table [value]="orderItems" responsiveLayout="scroll" styleClass="p-datatable-gridlines">
+        <ng-template pTemplate="header">
+            <tr>
+                <th >Name</th>
+                <th >Brand</th>
+                <th >Category</th>
+                <th >price</th>
+                <th >Quantity</th>
+                <th>Subtotal</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-orderItem>
+            <tr>
+                <td >{{orderItem.product.name}}</td>
+                <td >{{orderItem.product.brand}}</td>
+                <td >{{orderItem.product.category.name}}</td>
+                <td >{{ orderItem.product.price | currency }}</td>
+                <td >{{ orderItem.quantity }}</td>
+                <td >{{ orderItem.product.price * orderItem.quantity | currency }}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+    <div class="grid mt-3" style="color: green ; background-color: #EEE;">
+        <div class="col-2 offset-8 text-bold">Total Price</div>
+
+        <div class="col-2 text-bold">{{ order.totalPrice | currency }}</div>
+    </div>
+</p-fieldset>
+
+<p-fieldset [toggleable]="true" styleClass="mb-4" legend="Order Address">
+<div class="grid">
+    <div class="col-4">
+        <h5>Order Address</h5>
+        <p>
+        {{ order.shippingAddress1 }}<br />
+        {{ order.shippingAddress2 }}<br />
+        {{ order.zip }} {{ order.city }}<br />
+        {{ order.country }}
+        </p>
+    </div>
+
+    <div class="col-4">
+        <h5>Customer Info</h5>
+        <p>{{ userOrdered.name }}</p>
+    </div>
+
+    <div class="col-4">
+        <h5>Contact Info</h5>
+        <p>{{ order.phone }}</p>
+    </div>
+    </div>
+</p-fieldset>
+    </p-card>
+</div>

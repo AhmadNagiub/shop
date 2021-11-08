@@ -1,0 +1,19 @@
+.login-register {
+background-image: linear-gradient(235deg, #565867, #191a25);
+height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+&-panel {
+
+
+    width: 650px;
+    height: 525px;
+    background-color: var(--surface-a);
+    
+
+    .full-btn {
+    width: 100%;
+    }
+}
+}

@@ -1,0 +1,76 @@
+// * {
+// padding: 0;
+// margin: 0;
+// box-sizing: border-box;
+// }
+
+.body {
+height: 100vh;
+background-image: url('https://images.unsplash.com/photo-1521587760476-6c12a4b040da?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYyOTE0MDQxOQ&ixlib=rb-1.2.1&q=85');
+background-size: cover;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.contact-container {
+width: 100%;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+align-items: center;
+
+.card {
+    background: #292929;
+    min-width: 300px;
+    height: 140px;
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    }
+    
+    .card i {
+    color: #d44444;
+    font-size: 2rem;
+    position: absolute;
+    transition: all 0.4s ease;
+    }
+    
+    .card-title {
+    color: #d44444;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    transform: translate(0,-80px);
+    transition: all 0.4s ease;
+    }
+    
+    .card-info {
+    color: #fff;
+    margin-top: 10px;
+    transform: translate(0, 80px);
+    transition: all 0.4s ease;
+    }
+    
+    .card:hover i {
+    transform: scale(2);
+    opacity: 0;
+    }
+    
+    .card:hover .card-title {
+    transform: translate(0, 0);
+    }
+    .card:hover .card-info {
+    transform: translate(0, 0);
+    }
+}
+
+
+@media screen and (max-width: 900px) {
+.card {
+    flex: 100%; 
+    max-width: 500px;
+}
+}
